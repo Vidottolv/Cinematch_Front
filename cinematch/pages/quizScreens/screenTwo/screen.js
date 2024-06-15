@@ -15,7 +15,7 @@ const QuizScreenTwo = () => {
 
     return(
     <Animatable.View 
-        animation={'lightSpeedIn'}
+        // animation={'lightSpeedIn'}
         style={styles.subContainer}>
         <Image
             source={require('../../../assets/cinematch_logo.png')} 
@@ -30,7 +30,7 @@ const QuizScreenTwo = () => {
                         style={styles.backButton}>
                         <Text style={styles.backButtonText}>VOLTAR</Text>
                     </TouchableOpacity>
-                    <View style={{ width:'20%' }}></View>
+                    <View style={{ width:'10%' }}></View>
                     <TouchableOpacity
                         onPress={() => navigation.navigate('screenthree')}
                         style={styles.startButton}>

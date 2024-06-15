@@ -8,9 +8,9 @@ const StoryTypeSelection = () => {
     //#region CONSTS
     const [selectedStoryType, setSelectedStoryType] = useState(null);
     const storyTypes = [
-        { label: 'Baseado em Fatos Reais', value: 1 },
-        { label: 'Totalmente Fictícios', value: 2 },
-        { label: 'Mistura de Realidade e Ficção', value: 3 }];
+      { label: 'Baseado em Fatos Reais', value: 1 },
+      { label: 'Totalmente Fictícios', value: 2 },
+      { label: 'Mistura de Realidade e Ficção', value: 3 }];
     const handleCheckboxChange = (value) => {
         setSelectedStoryType(value);
       };

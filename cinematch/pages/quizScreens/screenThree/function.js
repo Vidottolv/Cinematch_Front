@@ -8,9 +8,12 @@ const AgeMovieSelection = () => {
     //#region CONSTS
     const [selectedAgeMovie, setSelectedAgeMovie] = useState(null);
     const agemovies = [
-        { label: 'Baseado em Fatos Reais', value: 1 },
-        { label: 'Totalmente Fictícios', value: 2 },
-        { label: 'Mistura de Realidade e Ficção', value: 3 }];
+      { label: 'Anos 70', value: 1 },
+      { label: 'Anos 80', value: 2 },
+      { label: 'Anos 90', value: 3 },
+      { label: 'Anos 2000', value: 4 },
+      { label: 'Anos 2010', value: 5 },
+      { label: 'Atualidade', value: 6 },];
     const handleCheckboxChange = (value) => {
         setSelectedAgeMovie(value);
       };

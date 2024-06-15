@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 40,
         borderRadius: 5,
-        width:'35%',
+        width:'45%',
     },
     startButtonText: {
         color: '#F54952',
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 40,
         borderRadius: 5,
-        width:'35%'
+        width:'45%'
     },
     backButtonText: {
         color: '#FFF',
