@@ -1,5 +1,3 @@
-// src/front/cinematch_front/cinematch/pages/welcome/WelcomeStyles.js
-
 import { StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 
@@ -14,7 +12,7 @@ const styles = StyleSheet.create({
     retangle: {
         // marginTop:'25%',
         width: '85%',
-        height: '65%',
+        height: '70%',
         backgroundColor: '#280659',
         borderRadius: 15,
     },

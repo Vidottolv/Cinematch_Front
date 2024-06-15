@@ -1,7 +1,7 @@
 // import Signin from '../pages/signin';
 import Welcome from '../pages/welcome/screen';
+import StartQuiz from '../pages/startquiz/screen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { Cadastros } from '../pages/home';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,14 +15,14 @@ export function StackRoutes(){
                 headerShown:false,
             }}
             />
-            {/* <Stack.Screen
-            name="signin"
-            component={Signin}
+            <Stack.Screen
+            name="startquiz"
+            component={StartQuiz}
             options={{
                 headerShown:false,
             }}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
             name="home"
             component={Cadastros}
             options={{

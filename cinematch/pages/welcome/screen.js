@@ -1,23 +1,19 @@
-// src/front/cinematch_front/cinematch/pages/welcome/WelcomeScreen.js
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import styles from './style';
-import { fetchData } from './function';
 import { Ionicons } from "@expo/vector-icons";
-
-
+import { useNavigation } from '@react-navigation/native';
 
 const Welcome = () => {
-  const [data, setData] = useState(null);
+    const navigation = useNavigation()
 
-  useEffect(() => {
-    const loadData = async () => {
-      const result = await fetchData();
-      setData(result);
-    };
-    loadData();
-  }, []);
+    //#region MESSAGES
+        const placeholderEmail = 'E-mail ou número de celular'
+        const forgotPassword = 'Esqueceu a senha?'
+        const registerWithGoogle = 'Registrar com Google'
+        const registerWithFacebook = 'Registrar com Facebook'
+        const registerWithApple = 'Registrar com Apple'
+    //#endregion
 
   return (
     <View style={styles.container}>
@@ -26,7 +22,7 @@ const Welcome = () => {
             <Text style={styles.textTitle}>Entrar</Text>
             <View style={styles.containerInput}>
                 <TextInput 
-                    placeholder='E-mail ou número de celular'
+                    placeholder={placeholderEmail}
                     placeholderTextColor={'#F54952'}
                     style={styles.input}/>
                 <TextInput 
@@ -35,9 +31,11 @@ const Welcome = () => {
                     style={styles.input}/>
                 <View style={styles.rowButtons}>
                     <TouchableOpacity style={styles.forgotPasswordButton}>
-                        <Text style={styles.forgotPasswordText}>Esqueceu a senha?</Text>
+                        <Text style={styles.forgotPasswordText}>{forgotPassword}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.loginButton}>
+                    <TouchableOpacity 
+                        onPress={() => navigation.navigate('startquiz')}
+                        style={styles.loginButton}>
                         <Text style={styles.loginButtonText}>Entrar</Text>
                     </TouchableOpacity>
                 </View>
@@ -49,16 +47,16 @@ const Welcome = () => {
                 <TouchableOpacity style={styles.loginButtonsCustom}>
                     {/* <Image source={require('../../assets/google_logo.png')}/> */}
                     <Ionicons name='logo-google' size={40} color={'#000'}/>
-                    <Text style={styles.defaultTextButtons}>Registrar com Google</Text>
+                    <Text style={styles.defaultTextButtons}>{registerWithGoogle}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.loginButtonsCustom}>
                     {/* <Image source={require('../../assets/facebook_logo.png')}/> */}
                     <Ionicons name='logo-facebook' size={40} color={'#000'}/>
-                    <Text style={styles.defaultTextButtons}>Registrar com Facebook</Text>
+                    <Text style={styles.defaultTextButtons}>{registerWithFacebook}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.loginButtonsCustom}>
                     <Ionicons name='logo-apple' size={40} color={'#000'}/>
-                    <Text style={styles.defaultTextButtons}>Registrar com Apple</Text>
+                    <Text style={styles.defaultTextButtons}>{registerWithApple}</Text>
                 </TouchableOpacity>
             </View>
         </View>
