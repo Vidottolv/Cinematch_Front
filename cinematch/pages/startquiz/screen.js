@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import styles from './style';
+import * as Animatable from 'react-native-animatable';
 
 const StartQuiz = () => {
 
@@ -10,7 +11,9 @@ const StartQuiz = () => {
     //#endregion
 
     return(
-    <View style={styles.subContainer}>
+    <Animatable.View 
+        animation={'lightSpeedIn'}
+        style={styles.subContainer}>
         <Image
             source={require('../../assets/cinematch_logo.png')} 
             style={styles.logo}/>
@@ -21,7 +24,7 @@ const StartQuiz = () => {
                     <Text style={styles.startButtonText}>Começar</Text>
                 </TouchableOpacity>
             </View>
-    </View>
+    </Animatable.View>
     );
 }
 
