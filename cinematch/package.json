@@ -18,7 +18,8 @@
     "ionicons": "^7.4.0",
     "react": "18.2.0",
     "react-native": "0.74.1",
-    "react-native-animatable": "^1.4.0"
+    "react-native-animatable": "^1.4.0",
+    "react-native-elements": "^3.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
