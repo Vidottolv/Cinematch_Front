@@ -26,11 +26,13 @@ const QuizScreenOne = () => {
                 <MovieGenreSelection />
                 <View style={styles.rowButtonStep}>
                     <TouchableOpacity
+                        onPress={() => navigation.goBack()}
                         style={styles.backButton}>
                         <Text style={styles.backButtonText}>VOLTAR</Text>
                     </TouchableOpacity>
                     <View style={{ width:'20%' }}></View>
                     <TouchableOpacity
+                        onPress={() => navigation.navigate('screentwo')}
                         style={styles.startButton}>
                         <Text style={styles.startButtonText}>Próximo</Text>
                     </TouchableOpacity>
