@@ -5,11 +5,11 @@ import * as Animatable from 'react-native-animatable';
 import { useNavigation } from '@react-navigation/native';
 import MovieGenreSelection from './function';
 
-const QuizScreenFour = () => {
+const QuizScreenFive = () => {
 
     const navigation = useNavigation()
     //#region MESSAGES
-        const msgQuestion = 'Você prefere assistir a filmes...'
+        const msgQuestion = 'Que tipo de cenários você mais gosta em um filme?'
         const contentScreenQuizStart = ''
     //#endregion
 
@@ -32,7 +32,7 @@ const QuizScreenFour = () => {
                     </TouchableOpacity>
                     <View style={{ width:'10%' }}></View>
                     <TouchableOpacity
-                        onPress={() => navigation.navigate('screenfive')}
+                        onPress={() => navigation.navigate('screensix')}
                         style={styles.startButton}>
                         <Text style={styles.startButtonText}>Próximo</Text>
                     </TouchableOpacity>
@@ -42,4 +42,4 @@ const QuizScreenFour = () => {
     );
 }
 
-export default QuizScreenFour;
+export default QuizScreenFive;
