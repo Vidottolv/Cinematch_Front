@@ -5,6 +5,7 @@ import QuizScreenOne from '../pages/quizScreens/screenOne/screen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import QuizScreenTwo from '../pages/quizScreens/screenTwo/screen';
 import QuizScreenThree from '../pages/quizScreens/screenThree/screen';
+import QuizScreenFour from '../pages/quizScreens/screenFour/screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,12 @@ export function StackRoutes(){
             <Stack.Screen
             name="screenthree"
             component={QuizScreenThree}
+            options={{
+                headerShown:false,
+            }}/>
+            <Stack.Screen
+            name="screenfour"
+            component={QuizScreenFour}
             options={{
                 headerShown:false,
             }}/>
