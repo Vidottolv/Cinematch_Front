@@ -33,11 +33,13 @@ const RecoveryPassword = () => {
                     style={styles.input}/>
             <View style={styles.rowButtons}>
                     <TouchableOpacity
+                        onPress={() => navigation.goBack()}
                         style={styles.backButton}>
                         <Text style={styles.backButtonText}>{cancel}</Text>
                     </TouchableOpacity>
                     <View style={{width:'10%'}}></View>
                     <TouchableOpacity 
+                        onPress={() => navigation.navigate('successpassword')}
                         style={styles.confirmButton}>
                         <Text style={styles.confirmButtonText}>{send}</Text>
                     </TouchableOpacity>

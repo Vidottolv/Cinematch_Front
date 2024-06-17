@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         width: '85%',
         height: '70%',
         backgroundColor: '#280659',
-        borderRadius: 15,
+        borderRadius: 8,
     },
     textTitle: {
         // fontFamily:'Inter',
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     },
     input: {
         paddingLeft:10,
-        marginTop:20,
+        marginTop:30,
         width:'90%',
         height:60,
         borderRadius:8,
@@ -41,10 +41,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '90%', 
-        marginTop: '5%',
+        marginTop: '10%',
     },
     detailedMessageText: {
         color: '#F45B69',
+        marginTop:'3%',
         fontSize:16,
         marginLeft: 20,
         marginRight: 20,
