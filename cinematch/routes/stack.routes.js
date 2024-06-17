@@ -9,6 +9,7 @@ import QuizScreenFour from '../pages/quizScreens/screenFour/screen';
 import QuizScreenFive from '../pages/quizScreens/screenFive/screen';
 import QuizScreenSix from '../pages/quizScreens/screenSix/screen';
 import RecoveryPassword from '../pages/recovery_password/recovery/screen';
+import RecoverySuccessPassword from '../pages/recovery_password/success/screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -66,6 +67,12 @@ export function StackRoutes(){
             <Stack.Screen
             name="recoverypassword"
             component={RecoveryPassword}
+            options={{
+                headerShown:false,
+            }}/>
+            <Stack.Screen
+            name="successpassword"
+            component={RecoverySuccessPassword}
             options={{
                 headerShown:false,
             }}/>
