@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         width: '85%',
         height: '70%',
         backgroundColor: '#280659',
-        borderRadius: 15,
+        borderRadius: 8,
     },
     textTitle: {
         // fontFamily:'Inter',
