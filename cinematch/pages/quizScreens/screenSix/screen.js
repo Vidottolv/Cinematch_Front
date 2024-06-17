@@ -33,7 +33,7 @@ const QuizScreenSix = () => {
                     <View style={{ width:'10%' }}></View>
                     <TouchableOpacity
                         style={styles.startButton}>
-                        <Text style={styles.startButtonText}>Próximo</Text>
+                        <Text style={styles.startButtonText}>Finalizar</Text>
                     </TouchableOpacity>
                 </View>
             </View>

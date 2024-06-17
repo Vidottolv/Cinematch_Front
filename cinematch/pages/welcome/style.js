@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     loginButton: {
       backgroundColor: '#8D2456',
       paddingVertical: 10,
-      paddingHorizontal: 40,
+      paddingHorizontal: 20,
       borderRadius: 5,
     },
     loginButtonText: {

@@ -30,7 +30,9 @@ const Welcome = () => {
                     placeholderTextColor={'#F54952'}
                     style={styles.input}/>
                 <View style={styles.rowButtons}>
-                    <TouchableOpacity style={styles.forgotPasswordButton}>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('recoverypassword')} 
+                        style={styles.forgotPasswordButton}>
                         <Text style={styles.forgotPasswordText}>{forgotPassword}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
