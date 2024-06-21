@@ -22,7 +22,6 @@ const QuizScreenOne = () => {
             style={styles.logo}/>
             <View style={styles.mainContainer}>
                 <Text style={styles.title}>{msgQuestion}</Text>
-                {/* <Text style={styles.description}>{contentScreenQuizStart}</Text> */}
                 <MovieGenreSelection />
                 <View style={styles.rowButtonStep}>
                     <TouchableOpacity
