@@ -2,20 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
-import axios from 'axios';
 import styles from '../commonStyle';
+import fetchDados from '../commonFunction';
+
 
 const API_URL = 'http://10.0.2.2:5207/api/genre';
-
-const fetchDados = async () => {
-  try {
-    const response = await axios.get(API_URL);
-    return response.data;
-  } catch (error) {
-    console.error('Erro ao buscar gêneros:', error);
-    throw error;
-  }
-};
 
 const MovieGenreSelection = () => {
   const [selectedGenre, setSelectedGenre] = useState(null);
@@ -24,14 +15,13 @@ const MovieGenreSelection = () => {
   useEffect(() => {
     const getGenres = async () => {
       try {
-        const data = await fetchDados();
+        const data = await fetchDados(API_URL);
         const formattedGenres = data.map((genre) => ({
           label: genre.genre, 
           value: genre.idGenre
         }));
         setGenres(formattedGenres);
       } catch (error) {
-        console.error('Erro ao buscar dados:', error);
       }
     };
     getGenres();

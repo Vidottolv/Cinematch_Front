@@ -3,16 +3,32 @@ import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import styles from '../commonStyle';
+import fetchDados from '../commonFunction';
+
+const API_URL = 'http://10.0.2.2:5207/api/duration';
 
 const DurationMovieSelection = () => {
     //#region CONSTS
     const [selectedDurationMovie, setSelectedDurationMovie] = useState(null);
-    const durationmovies = [
-      { label: 'Menos de 90 min', value: 1 },
-      { label: 'De 90 a 120 min', value: 2 },
-      { label: 'Mais de 120 min', value: 3 },];
+    const [DurationMovie, setDurationMovie] = useState([]);
+
+    useEffect(() => {
+      const getDuration = async () => {
+        try {
+          const data = await fetchDados(API_URL);
+          const formattedDuration = data.map((duration) => ({
+            label: duration.durationMovie, 
+            value: duration.idDuration
+          }));
+          setDurationMovie(formattedDuration);
+        } catch (error) {
+        }
+      };
+      getDuration();
+    }, []);
+
     const handleCheckboxChange = (value) => {
-        selectedDurationMovie(value);
+        setSelectedDurationMovie(value);
       };
     //#endregion
     useEffect(() => {
@@ -23,7 +39,7 @@ const DurationMovieSelection = () => {
   
     return (
         <View style={styles.checkboxContainer}>
-            {durationmovies.map((durationmovies) => (
+            {DurationMovie.map((durationmovies) => (
                 <CheckBox
                     key={durationmovies.value}
                     title={`${durationmovies.label}`}

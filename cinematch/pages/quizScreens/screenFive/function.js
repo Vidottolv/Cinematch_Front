@@ -3,16 +3,30 @@ import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import styles from '../commonStyle';
+import fetchDados from '../commonFunction';
+
+const API_URL = 'http://10.0.2.2:5207/api/kind';
 
 const KindMovieSelection = () => {
     //#region CONSTS
     const [selectedKindMovie, setSelectedKindMovie] = useState(null);
-    const kindmovies = [
-      { label: 'Fantasia', value: 1 },
-      { label: 'Ficção científica', value: 2 },
-      { label: 'Realidade contemporânea', value: 3 },
-      { label: 'Época histórica', value: 4 },
-      { label: 'Futuro Distópico', value: 5 },];
+    const [KindMovie, setKindMovie] = useState([]);
+
+    useEffect(() => {
+      const getKind = async () => {
+        try {
+          const data = await fetchDados(API_URL);
+          const formattedKind = data.map((kind) => ({
+            label: kind.kind, 
+            value: kind.idKind
+          }));
+          setKindMovie(formattedKind);
+        } catch (error) {
+        }
+      };
+      getKind();
+    }, []);
+
     const handleCheckboxChange = (value) => {
         setSelectedKindMovie(value);
       };
@@ -25,7 +39,7 @@ const KindMovieSelection = () => {
   
     return (
         <View style={styles.checkboxContainer}>
-            {kindmovies.map((kindmovies) => (
+            {KindMovie.map((kindmovies) => (
                 <CheckBox
                     key={kindmovies.value}
                     title={`${kindmovies.label}`}

@@ -3,32 +3,48 @@ import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import styles from '../commonStyle';
+import fetchDados from '../commonFunction';
+
+
+const API_URL = 'http://10.0.2.2:5207/api/storytype';
 
 const StoryTypeSelection = () => {
-    //#region CONSTS
-    const [selectedStoryType, setSelectedStoryType] = useState(null);
-    const storyTypes = [
-      { label: 'Baseado em Fatos Reais', value: 1 },
-      { label: 'Totalmente Fictícios', value: 2 },
-      { label: 'Mistura de Realidade e Ficção', value: 3 }];
-    const handleCheckboxChange = (value) => {
-        setSelectedStoryType(value);
-      };
-    //#endregion
-    useEffect(() => {
-        if (selectedStoryType !== null) {
-          console.log('Selected StoryType:', selectedStoryType);
-        }
-      }, [selectedStoryType]);
+  const [selectedStoryType, setSelectedStoryType] = useState(null);
+  const [storyTypes, setStorytype] = useState([]);
+
+  useEffect(() => {
+    const getStoryType = async () => {
+      try {
+        const data = await fetchDados(API_URL);
+        const formattedStoryType = data.map((storyType) => ({
+          label: storyType.storyType, 
+          value: storyType.idStoryType
+        }));
+        setStorytype(formattedStoryType);
+      } catch (error) {
+      }
+    };
+    getStoryType();
+  }, []);
+
+  const handleCheckboxChange = (value) => {
+    setSelectedStoryType(value);
+  };
+
+  useEffect(() => {
+    if (selectedStoryType !== null) {
+      console.log('Selected storytype:', selectedStoryType);
+    }
+  }, [selectedStoryType]);
   
     return (
         <View style={styles.checkboxContainer}>
-            {storyTypes.map((storyTypes) => (
+            {storyTypes.map((storyType) => (
                 <CheckBox
-                    key={storyTypes.value}
-                    title={`${storyTypes.label}`}
-                    checked={selectedStoryType === storyTypes.value}
-                    onPress={() => handleCheckboxChange(storyTypes.value)}
+                    key={storyType.value}
+                    title={`${storyType.label}`}
+                    checked={selectedStoryType === storyType.value}
+                    onPress={() => handleCheckboxChange(storyType.value)}
                     containerStyle={styles.checkbox}
                     textStyle={styles.checkboxText}
                     checkedColor='#F45B69'

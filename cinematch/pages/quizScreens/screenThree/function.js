@@ -3,17 +3,28 @@ import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import styles from '../commonStyle';
+import fetchDados from '../commonFunction';
+
+const API_URL = 'http://10.0.2.2:5207/api/age';
 
 const AgeMovieSelection = () => {
-    //#region CONSTS
-    const [selectedAgeMovie, setSelectedAgeMovie] = useState(null);
-    const agemovies = [
-      { label: 'Anos 70', value: 1 },
-      { label: 'Anos 80', value: 2 },
-      { label: 'Anos 90', value: 3 },
-      { label: 'Anos 2000', value: 4 },
-      { label: 'Anos 2010', value: 5 },
-      { label: 'Atualidade', value: 6 },];
+  const [selectedAgeMovie, setSelectedAgeMovie] = useState(null);
+  const [AgeMovie, setAgeMovie] = useState([]);
+
+  useEffect(() => {
+    const getAge = async () => {
+      try {
+        const data = await fetchDados(API_URL);
+        const formattedAges = data.map((age) => ({
+          label: age.age, 
+          value: age.idAge
+        }));
+        setAgeMovie(formattedAges);
+      } catch (error) {
+      }
+    };
+    getAge();
+  }, []);
     const handleCheckboxChange = (value) => {
         setSelectedAgeMovie(value);
       };
@@ -26,12 +37,12 @@ const AgeMovieSelection = () => {
   
     return (
         <View style={styles.checkboxContainer}>
-            {agemovies.map((agemovies) => (
+            {AgeMovie.map((age) => (
                 <CheckBox
-                    key={agemovies.value}
-                    title={`${agemovies.label}`}
-                    checked={selectedAgeMovie === agemovies.value}
-                    onPress={() => handleCheckboxChange(agemovies.value)}
+                    key={age.value}
+                    title={`${age.label}`}
+                    checked={selectedAgeMovie === age.value}
+                    onPress={() => handleCheckboxChange(age.value)}
                     containerStyle={styles.checkbox}
                     textStyle={styles.checkboxText}
                     checkedColor='#F45B69'

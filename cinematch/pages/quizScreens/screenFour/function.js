@@ -3,15 +3,30 @@ import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import styles from '../commonStyle';
+import fetchDados from '../commonFunction';
+
+
+const API_URL = 'http://10.0.2.2:5207/api/end';
 
 const EndMovieSelection = () => {
     //#region CONSTS
     const [selectedEndMovie, setSelectedEndMovie] = useState(null);
-    const endmovies = [
-      { label: 'Com finais felizes', value: 1 },
-      { label: 'Com finais tristes', value: 2 },
-      { label: 'Com finais abertos a interpretações', value: 3 },
-      { label: 'Com reviravoltas', value: 4 },];
+    const [EndMovie, setEndMovie] = useState([]);
+
+    useEffect(() => {
+      const getEnd = async () => {
+        try {
+          const data = await fetchDados(API_URL);
+          const formattedEnd = data.map((end) => ({
+            label: end.end, 
+            value: end.idEnd
+          }));
+          setEndMovie(formattedEnd);
+        } catch (error) {
+        }
+      };
+      getEnd();
+    }, []);
     const handleCheckboxChange = (value) => {
         setSelectedEndMovie(value);
       };
@@ -24,7 +39,7 @@ const EndMovieSelection = () => {
   
     return (
         <View style={styles.checkboxContainer}>
-            {endmovies.map((endmovies) => (
+            {EndMovie.map((endmovies) => (
                 <CheckBox
                     key={endmovies.value}
                     title={`${endmovies.label}`}
